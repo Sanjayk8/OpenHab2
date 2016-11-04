@@ -1,0 +1,22 @@
+!SESSION 2016-09-21 12:20:30.093 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_91
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_IN
+
+!ENTRY org.glassfish.hk2.osgi-resource-locator 4 0 2016-09-21 12:20:30.093
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Exception in org.apache.karaf.features.internal.service.FeaturesServiceImpl$3.end()
+	at org.eclipse.osgi.internal.framework.OSGiFrameworkHooks$CoreResolverHookFactory.handleHookException(OSGiFrameworkHooks.java:164)
+	at org.eclipse.osgi.internal.framework.OSGiFrameworkHooks$CoreResolverHookFactory$CoreResolverHook.end(OSGiFrameworkHooks.java:340)
+	at org.eclipse.osgi.container.ModuleResolver$ResolveProcess.resolve(ModuleResolver.java:901)
+	at org.eclipse.osgi.container.ModuleResolver.resolveDelta(ModuleResolver.java:111)
+	at org.eclipse.osgi.container.ModuleContainer.resolveAndApply(ModuleContainer.java:479)
+	at org.eclipse.osgi.container.ModuleContainer.resolve(ModuleContainer.java:437)
+	at org.eclipse.osgi.container.ModuleContainer.resolve(ModuleContainer.java:427)
+	at org.eclipse.osgi.container.Module.start(Module.java:416)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1498)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)

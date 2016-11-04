@@ -1,0 +1,60 @@
+sitemap demo1 label="Building Automation."
+{
+	Frame 
+	{
+		Text label="First Floor" icon="firstfloor" 
+		{
+			Text item=water_temperature icon="temperature"			
+			Text item=room_temperature icon="temperature"	
+			Switch item=Lights label="Ceiling" icon="light-off"			
+			Switch item=alarm_management icon="clock"			
+			Switch item=smoke			
+			Switch item=sprink	
+			Switch item=server	
+		}		
+		Text label="Ground Floor" icon="groundfloor" 
+		{
+			
+			Switch label="Office" icon="office"			
+			Text item="room_temperature" label="room"icon="temperature"			
+		}	
+		Text label="Cellar" icon="cellar" 
+		{
+			Text label="Ceiling" icon="light-off"			
+			Text label="Stair Case" icon="light-off"			
+		}		
+	}
+
+	Frame 
+	{
+		//Rollershutter	item=Shutter_FF_Office_Window	icon="temperature"
+		// Bulb1
+		Switch item=		Light1_Toggle
+		Slider item=		Light1_Dimmer
+		Colorpicker item=	Light1_Color
+		Slider item=		Light1_ColorTemp
+
+		// Bulb2
+		Switch item=		Light2_Toggle
+		Slider item=		Light2_Dimmer
+		Slider item=		Light2_ColorTemp
+	}
+	
+	Frame label="Date"
+	{
+		Text item=Date icon="calender"
+	}
+	Frame 
+	{
+		Text item=Resource_detect icon="slider"		
+		Text item=Temperature label="temp added" icon="temperature"		
+		Chart item=gTemperatures period=h refresh=2
+		Text item=TempMin
+		Text item=TempMax
+	}
+  	Frame label="Average temperature"
+	{
+		Chart item=gTempAvg period=h refresh=30000
+		Text item=TempAvg
+	}	
+}

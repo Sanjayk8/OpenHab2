@@ -1,0 +1,42 @@
+Group	All
+Group	Shutters	(All)	
+Group	Status	(All)		
+Group:Switch:OR(ON,OFF)	Lights	"All Lights [(%d)]"	(All)	
+Group:Switch:OR(ON,OFF)	Heating	"No. of Active Heatings [(%d)]"	<heating>	(All)	
+Group:Number:AVG()	Temperature	"Avg. Room Temperature [%.1f °C]"	<temperature>	(Status)	
+Group:Contact:OR(OPEN,CLOSED)	Windows	"Open windows [(%d)]"	<contact>	(All)	
+Group:Switch:OR(ON,OFF)	Alarm	"No. of Active Alarms [(%d)]"	<alarm>	(All)	
+
+Group Room_temperature
+
+Group gTemperatures
+Number TEMP_1 "Temperatrue 1" (gTemperatures,TempAvg,TempMinmax)	{mqtt="<[mosquitto:tempsend:state:default]"}
+Number TEMP_2 "Temperatrue 2" (gTemperatures,TempAvg,TempMinmax)	{mqtt="<[mosquitto:tempsend2:state:default]"}
+
+Group gTempAvg
+Group:Number:AVG TempAvg "Instant Avg. temperature [%.1f °C]" <temperature> (gTempAvg)
+
+Group gTempMinmax
+Group:Number:MIN TempMin "Minimum temperature [%.1f °C]" <temperature> (gTempMinmax)
+Group:Number:MAX TempMax "Maximum temperature [%.1f °C]" <temperature>
+
+String	Resource_detect		"Resource [type-%s]"		(Resource)			{ mqtt="<[mosquitto:home/metadata:state:default]" }
+String	water_temperature	"Water Temperature [temp-%s]"	(Water_Temperature)		{ mqtt="<[mosquitto:home/ff/watertemp:state:default]" }
+String	room_temperature	"Room Temperature [temp-%s]"	(Room_Temperature)		{ mqtt="<[mosquitto:home/ff/roomtemp:state:default]" }
+Switch	alarm_management	"Alarm Management"		(Alarm)	
+Switch 	smoke			"Smoke_detect" 			(Smoke)
+Switch	sprink			"Sprinkler"			(Sprink)
+Switch	server			"Server"			(Servers)
+Rollershutter	Shutter_FF_Office_Window	"Office Window"	(Shutters)	
+DateTime    Date    "Date [%1$tA, %1$td.%1$tm.%1$tY]"   (Status)    { ntp="" }
+
+// Bulb1
+Switch	Light1_Toggle		{ channel="hue:0210:1:bulb1:color" }
+Dimmer  Light1_Dimmer		{ channel="hue:0210:1:bulb1:color" }
+Color 	Light1_Color		{ channel="hue:0210:1:bulb1:color" }
+Dimmer 	Light1_ColorTemp	{ channel="hue:0210:1:bulb1:color_temperature" }
+
+// Bulb2
+Switch	Light2_Toggle		{channel="hue:0220:1:bulb2:brightness"}				
+Dimmer	Light2_Dimm		{channel="hue:0220:1:bulb2:brightness"}
+Dimmer	Light2_ColorTemp	{channel="hue:0220:1:bulb2:color_temperature"}
